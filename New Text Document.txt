@@ -1,64 +1,45 @@
-#include<stdio.h>
-#define SIZE 10
+Certainly! Here's the C program using `scanf` to get input for your personal information:
 
-void push(int);
-void pop();
-void display();
-int stack[SIZE],top=-1;
-void main ()
-{
-int value,choice;
-while(1)
-{
-printf("\n\n*****MENU*****\n");
-printf("1.push\n2.pop\n3.Display\n4.Exit");
-printf("\n Enter your choice:");
-scanf("%d",&choice);
-switch(choice)
-{
-case 1 :printf("Enter the value to be insert:");
-	scanf("%d",&value);
-	push(value);
-	break;
-case 2 :pop();
-	break;
-case 3 :display();
-	break;
-case 4 :exit(0);
-default:printf("\n Wrong selection!!! Try again!!!");
+```c
+#include <stdio.h>
+
+int main() {
+    // Personal Information
+    char name[50];
+    char dob[20];
+    char mobile[20];
+    char email[50];
+    char address[100];
+
+    // Getting Input for Personal Information
+    printf("Enter Your Name: ");
+    scanf("%49s", name); // Use %49s to limit the input to 49 characters to prevent buffer overflow
+    
+    printf("Enter Date of Birth: ");
+    scanf("%19s", dob);
+    
+    printf("Enter Mobile Number: ");
+    scanf("%19s", mobile);
+    
+    printf("Enter Email ID: ");
+    scanf("%49s", email);
+    
+    // Consume the newline character left in the input buffer
+    getchar();
+    
+    printf("Enter Address: ");
+    fgets(address, sizeof(address), stdin);
+
+    // Displaying Personal Information
+    printf("\nPersonal Information:\n");
+    printf("Name: %s\n", name);
+    printf("Date of Birth: %s\n", dob);
+    printf("Mobile Number: %s\n", mobile);
+    printf("Email ID: %s\n", email);
+    printf("Address: %s", address);
+
+    return 0;
 }
-}
-}
-void push(int value)
-{
-if (top==SIZE-1)
-printf("\n stack is full!!!Insertion is not possible!!!");
-else
-{
-top++;
-stack[top]=value;
-printf("\n Insertion is success!!!");
-}
-}
-void pop()
-{
-if(top==-1)
-printf("\n Stack is empty !!!Deletion is not possible!!!");
-else
-{
-printf("\n deleted:%d",stack[top]);
-top--;
-}
-}
-void display()
-{
-if(top==-1)
-printf("\n stack is empty!!!");
-else
-{
-int i;
-printf("\n stack elements are :\n");
-for(i=top;i>=0;i--)
-printf("%d\n",stack[i]);
-}
-}
+```
+
+This program uses `scanf` to get input for the name, date of birth, mobile number, and email ID while using `fgets` for the address. It limits the input size to avoid buffer overflow issues.
