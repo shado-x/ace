@@ -1,0 +1,376 @@
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| busrev             |
+| information_schema |
+| kishore            |
+| mysql              |
+| performance_schema |
+| sakila             |
+| student            |
+| sys                |
+| userdb             |
+| world              |
++--------------------+
+10 rows in set (0.00 sec)
+
+mysql> create database Roadways_Management_System;
+Query OK, 1 row affected (0.01 sec)
+
+mysql> use Roadways_Management_System;
+Database changed
+mysql> create table Bus_49 (BusNo varchar(10),source varchar(20),destination varchar(20),coachtype varchar(20));
+Query OK, 0 rows affected (0.02 sec)
+
+mysql> describe Bus_49;
++-------------+-------------+------+-----+---------+-------+
+| Field       | Type        | Null | Key | Default | Extra |
++-------------+-------------+------+-----+---------+-------+
+| BusNo       | varchar(10) | YES  |     | NULL    |       |
+| source      | varchar(20) | YES  |     | NULL    |       |
+| destination | varchar(20) | YES  |     | NULL    |       |
+| coachtype   | varchar(20) | YES  |     | NULL    |       |
++-------------+-------------+------+-----+---------+-------+
+4 rows in set (0.00 sec)
+
+mysql> insert into Bus_49 values ("TN201","chennai","kanchipuram","AC-sleeper");
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into Bus_49 values ("TN202","chennai","madurai","AC-sleeper");
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into Bus_49 values ("TN203","chennai","thiruvallur","seater");
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into Bus_49 values ("TN104","chennai","vellore","seater");
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into Bus_49 values ("TN105","chennai","madurai","AC-sleeper");
+Query OK, 1 row affected (0.01 sec)
+
+mysql> select * from Bus_49;
++-------+---------+-------------+------------+
+| BusNo | source  | destination | coachtype  |
++-------+---------+-------------+------------+
+| TN201 | chennai | kanchipuram | AC-sleeper |
+| TN202 | chennai | madurai     | AC-sleeper |
+| TN203 | chennai | thiruvallur | seater     |
+| TN104 | chennai | vellore     | seater     |
+| TN105 | chennai | madurai     | AC-sleeper |
++-------+---------+-------------+------------+
+5 rows in set (0.00 sec)
+
+mysql> create table Ticket_49 (TicketNO varchar(10),DOJ date,address varchar(30),contactno varchar(10),BusNo varchar(10),seatno int,source varchar(20),destination varchar(20));
+Query OK, 0 rows affected (0.02 sec)
+
+mysql> describe Ticket_49;
++-------------+-------------+------+-----+---------+-------+
+| Field       | Type        | Null | Key | Default | Extra |
++-------------+-------------+------+-----+---------+-------+
+| TicketNO    | varchar(10) | YES  |     | NULL    |       |
+| DOJ         | date        | YES  |     | NULL    |       |
+| address     | varchar(30) | YES  |     | NULL    |       |
+| contactno   | varchar(10) | YES  |     | NULL    |       |
+| BusNo       | varchar(10) | YES  |     | NULL    |       |
+| seatno      | int         | YES  |     | NULL    |       |
+| source      | varchar(20) | YES  |     | NULL    |       |
+| destination | varchar(20) | YES  |     | NULL    |       |
++-------------+-------------+------+-----+---------+-------+
+8 rows in set (0.00 sec)
+
+mysql>insert into Ticket_49 values ("201","2023-10-27","tnagar","8838725401","TN201",01,"chennai","kanchipuram");
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into Ticket_49 values ("202","2023-10-28","chrompet","8838725402","TN202",02,"chennai","madurai");
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into Ticket_49 values ("203","2023-10-28","guindy","8838725403","TN203",03,"chennai","thiruvallur");
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into Ticket_49 values ("204","2023-10-29","tambaram","8838725404","TN204",04,"chennai","vellore");
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into Ticket_49 values ("205","2023-10-29","tambaram","8838725404","TN205",05,"chennai","madurai");
+Query OK, 1 row affected (0.01 sec)
+
+
+mysql> select * from Ticket_49;
++----------+------------+----------+------------+-------+--------+---------+-------------+
+| TicketNO | DOJ        | address  | contactno  | BusNo | seatno | source  | destination |
++----------+------------+----------+------------+-------+--------+---------+-------------+
+| 201      | 2023-10-27 | tnagar   | 8838725401 | TN201 |      1 | chennai | kanchipuram |
+| 202      | 2023-10-28 | chrompet | 8838725402 | TN202 |      2 | chennai | madurai     |
+| 203      | 2023-10-28 | guindy   | 8838725403 | TN203 |      3 | chennai | thiruvallur |
+| 204      | 2023-10-29 | tambaram | 8838725404 | TN204 |      4 | chennai | vellore     |
+| 205      | 2023-10-29 | tambaram | 8838725405 | TN205 |      5 | chennai | madurai     |
++----------+------------+----------+------------+-------+--------+---------+-------------+
+5 rows in set (0.00 sec)
+
+
+mysql> create table Passenger_49 (PassportID varchar(20),TicketNO varchar(10),name varchar(30),contactno varchar(10),age int,sex char,address varchar(30));
+Query OK, 0 rows affected (0.03 sec)
+
+mysql> describe Passenger_49;
++------------+-------------+------+-----+---------+-------+
+| Field      | Type        | Null | Key | Default | Extra |
++------------+-------------+------+-----+---------+-------+
+| PassportID | varchar(20) | YES  |     | NULL    |       |
+| TicketNO   | varchar(10) | YES  |     | NULL    |       |
+| name       | varchar(30) | YES  |     | NULL    |       |
+| contactno  | varchar(10) | YES  |     | NULL    |       |
+| age        | int         | YES  |     | NULL    |       |
+| sex        | char(1)     | YES  |     | NULL    |       |
+| address    | varchar(30) | YES  |     | NULL    |       |
++------------+-------------+------+-----+---------+-------+
+7 rows in set (0.00 sec)
+
+ insert into Passenger_49 values ("101","201","kishore","8838725401",21,'M',"tnagar");
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into Passenger_49 values ("102","202","ramesh","8838725402",33,'M',"chrompet");
+Query OK, 1 row affected (0.00 sec)
+
+
+mysql> insert into Passenger_49 values ("103","203","saran","8838725403",40,'M',"guindy");
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into Passenger_49 values ("104","204","ganesh","8838725404",48,'M',"tambaram");
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into Passenger_49 values ("105","205","aadhi","8838725405",28,'M',"tambaram");
+Query OK, 1 row affected (0.00 sec)
+
+
+mysql> select * from Passenger_49 ;
++------------+----------+---------+------------+------+------+----------+
+| PassportID | TicketNO | name    | contactno  | age  | sex  | address  |
++------------+----------+---------+------------+------+------+----------+
+| 101        | 201      | kishore | 8838725401 |   21 | M    | tnagar   |
+| 102        | 202      | ramesh  | 8838725402 |   33 | M    | chrompet |
+| 103        | 203      | saran   | 8838725403 |   40 | M    | guindy   |
+| 104        | 204      | ganesh  | 8838725404 |   48 | M    | tambaram |
+| 105        | 205      | aadhi   | 8838725405 |   28 | M    | tambaram |
++------------+----------+---------+------------+------+------+----------+
+5 rows in set (0.00 sec)
+
+mysql> create table Reservation_49 (PNRNO varchar(10),DOJ date,noofseats int,address varchar(30),contactno varchar(30),BusNo varchar(10),seatno int);
+Query OK, 0 rows affected (0.04 sec)
+
+mysql> describe Reservation_49;
++-----------+-------------+------+-----+---------+-------+
+| Field     | Type        | Null | Key | Default | Extra |
++-----------+-------------+------+-----+---------+-------+
+| PNRNO     | varchar(10) | YES  |     | NULL    |       |
+| DOJ       | date        | YES  |     | NULL    |       |
+| noofseats | int         | YES  |     | NULL    |       |
+| address   | varchar(30) | YES  |     | NULL    |       |
+| contactno | varchar(30) | YES  |     | NULL    |       |
+| BusNo     | varchar(10) | YES  |     | NULL    |       |
+| seatno    | int         | YES  |     | NULL    |       |
++-----------+-------------+------+-----+---------+-------+
+7 rows in set (0.00 sec)
+
+
+mysql> insert into Reservation_49 values("1001","2023-10-27",30,"tnagar","8838725401","TN201",1);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into Reservation_49 values("1002","2023-10-28",25,"chrompet","8838725402","TN202",2);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into Reservation_49 values("1003","2023-10-28",27,"guindy","8838725403","TN203",3);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into Reservation_49 values("1004","2023-10-29",28,"tambaram","8838725404","TN204",4);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into Reservation_49 values("1005","2023-10-29",30,"tambaram","8838725405","TN205",5);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> select * from Reservation_49;
++-------+------------+-----------+----------+------------+-------+--------+
+| PNRNO | DOJ        | noofseats | address  | contactno  | BusNo | seatno |
++-------+------------+-----------+----------+------------+-------+--------+
+| 1001  | 2023-10-27 |        30 | tnagar   | 8838725401 | TN201 |      1 |
+| 1002  | 2023-10-28 |        25 | chrompet | 8838725402 | TN202 |      2 |
+| 1003  | 2023-10-28 |        27 | guindy   | 8838725403 | TN203 |      3 |
+| 1004  | 2023-10-29 |        28 | tambaram | 8838725404 | TN204 |      4 |
+| 1005  | 2023-10-29 |        30 | tambaram | 8838725405 | TN205 |      5 |
++-------+------------+-----------+----------+------------+-------+--------+
+
+mysql> create table Cancellation_49 (PNRNO varchar(10),DOJ date,seatno int,contactno varchar(10),status varchar(20));
+Query OK, 0 rows affected (0.02 sec)
+
+mysql> describe Cancellation_49;
++-----------+-------------+------+-----+---------+-------+
+| Field     | Type        | Null | Key | Default | Extra |
++-----------+-------------+------+-----+---------+-------+
+| PNRNO     | varchar(10) | YES  |     | NULL    |       |
+| DOJ       | date        | YES  |     | NULL    |       |
+| seatno    | int         | YES  |     | NULL    |       |
+| contactno | varchar(10) | YES  |     | NULL    |       |
+| status    | varchar(20) | YES  |     | NULL    |       |
++-----------+-------------+------+-----+---------+-------+
+5 rows in set (0.00 sec)
+
+
+mysql> insert into Cancellation_49 values ("1005","2023-10-29",5,"8838725405","cancelled");
+Query OK, 1 row affected (0.01 sec)
+
+mysql> select * from Cancellation_49;
++-------+------------+--------+------------+-----------+
+| PNRNO | DOJ        | seatno | contactno  | status    |
++-------+------------+--------+------------+-----------+
+| 1005  | 2023-10-29 |      5 | 8838725405 | cancelled |
++-------+------------+--------+------------+-----------+
+1 row in set (0.00 sec)
+
+
+
+
+1. Adding Extra column to Existing Table
+
+BEFORE:
+
+mysql> describe Bus_49;
++-------------+-------------+------+-----+---------+-------+
+| Field       | Type        | Null | Key | Default | Extra |
++-------------+-------------+------+-----+---------+-------+
+| BusNo       | varchar(10) | YES  |     | NULL    |       |
+| source      | varchar(20) | YES  |     | NULL    |       |
+| destination | varchar(20) | YES  |     | NULL    |       |
+| coachtype   | varchar(20) | YES  |     | NULL    |       |
++-------------+-------------+------+-----+---------+-------+
+4 rows in set (0.00 sec)
+
+AFTER:
+
+mysql> alter table Bus_49 ADD column available_day_in_Week int;
+Query OK, 0 rows affected (0.01 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> describe Bus_49;
++-----------------------+-------------+------+-----+---------+-------+
+| Field                 | Type        | Null | Key | Default | Extra |
++-----------------------+-------------+------+-----+---------+-------+
+| BusNo                 | varchar(10) | YES  |     | NULL    |       |
+| source                | varchar(20) | YES  |     | NULL    |       |
+| destination           | varchar(20) | YES  |     | NULL    |       |
+| coachtype             | varchar(20) | YES  |     | NULL    |       |
+| available_day_in_Week | int         | YES  |     | NULL    |       |
++-----------------------+-------------+------+-----+---------+-------+
+5 rows in set (0.00 sec)
+
+2. UPDATE The destination for bus number TN203.
+
+BEFORE:
+
+mysql> select * from Bus_49;
++-------+---------+-------------+------------+-----------------------+
+| BusNo | source  | destination | coachtype  | available_day_in_Week |
++-------+---------+-------------+------------+-----------------------+
+| TN201 | chennai | kanchipuram | AC-sleeper |                  NULL |
+| TN202 | chennai | madurai     | AC-sleeper |                  NULL |
+| TN203 | chennai | thiruvallur | seater     |                  NULL |
+| TN104 | chennai | vellore     | seater     |                  NULL |
+| TN105 | chennai | madurai     | AC-sleeper |                  NULL |
++-------+---------+-------------+------------+-----------------------+
+5 rows in set (0.00 sec)
+
+mysql> update Bus_49 set destination="coimbatore" where BusNo="TN203";
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+AFTER:
+
+mysql> select * from Bus_49;
++-------+---------+-------------+------------+-----------------------+
+| BusNo | source  | destination | coachtype  | available_day_in_Week |
++-------+---------+-------------+------------+-----------------------+
+| TN201 | chennai | kanchipuram | AC-sleeper |                  NULL |
+| TN202 | chennai | madurai     | AC-sleeper |                  NULL |
+| TN203 | chennai | coimbatore  | seater     |                  NULL |
+| TN104 | chennai | vellore     | seater     |                  NULL |
+| TN105 | chennai | madurai     | AC-sleeper |                  NULL |
++-------+---------+-------------+------------+-----------------------+
+5 rows in set (0.00 sec)
+
+3. Display unique PNR_NO of all passengers
+
+mysql> select PNRNO from Reservation_49;
++-------+
+| PNRNO |
++-------+
+| 1001  |
+| 1002  |
+| 1003  |
+| 1004  |
+| 1005  |
++-------+
+5 rows in set (0.00 sec)
+4. Display all the names of male passengers.
+
+mysql> select name from Passenger_49 where sex='M';
++---------+
+| name    |
++---------+
+| kishore |
+| ramesh  |
+| saran   |
+| ganesh  |
+| aadhi   |
++---------+
+5 rows in set (0.00 sec)
+
+5. Display the ticket numbers and names of all the passengers.
+
+
+mysql> select TicketNo,name from Passenger_49;
++----------+---------+
+| TicketNo | name    |
++----------+---------+
+| 201      | kishore |
+| 202      | ramesh  |
+| 203      | saran   |
+| 204      | ganesh  |
+| 205      | aadhi   |
++----------+---------+
+5 rows in set (0.00 sec)
+
+6. Find the ticket numbers of the passengers whose name start with ‘r’
+and ends with ‘h’.
+
+mysql> select TicketNo from Passenger_49 where name LIKE "r%h";
++----------+
+| TicketNo |
++----------+
+| 202      |
++----------+
+1 row in set (0.00 sec)
+
+7.Find the names of Passengers whose age is between 30 and 45.
+
+
+mysql> select name from Passenger_49 where age BETWEEN 30 and 45;
++--------+
+| name   |
++--------+
+| ramesh |
+| saran  |
++--------+
+2 rows in set (0.00 sec)
+
+8.Display all the passengers names beginning with ‘A’.
+
+
+mysql> select name from Passenger_49 where name LIKE "a%";
++-------+
+| name  |
++-------+
+| aadhi |
++-------+
+1 row in set (0.00 sec)
+
+9. Write a Query to display the information present in the passenger and cancellation tables
+
+
